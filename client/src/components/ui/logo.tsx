@@ -11,10 +11,14 @@ type LogoProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   small?: boolean;
   /** visual treatment: 'plain' (just the image) or 'card' (rounded white card around it) */
   variant?: "plain" | "card";
+  /** explicit size control; overrides `small` when provided */
+  size?: "sm" | "md" | "lg";
 };
 
-export function Logo({ small, alt = "Malama logo", className = "", variant = "card", ...rest }: LogoProps) {
-  const sizeClass = small ? "h-8 w-auto" : "h-12 w-auto";
+export function Logo({ small, alt = "Malama logo", className = "", variant = "card", size, ...rest }: LogoProps) {
+  const resolvedSize: "sm" | "md" | "lg" = size ?? (small ? "sm" : "md");
+  const sizeClass =
+    resolvedSize === "sm" ? "h-9 w-auto" : resolvedSize === "lg" ? "h-16 w-auto" : "h-12 w-auto";
   const imgEmphasis = "drop-shadow-md contrast-[1.05] brightness-105 saturate-110";
 
   if (variant === "plain") {
@@ -29,9 +33,12 @@ export function Logo({ small, alt = "Malama logo", className = "", variant = "ca
   }
 
   // Card variant: rounded white background with soft shadow and subtle ring
-  const wrapperClass = small
-    ? "inline-flex items-center justify-center p-1.5 rounded-xl bg-white shadow-md ring-1 ring-black/5"
-    : "inline-flex items-center justify-center p-3 rounded-2xl bg-white shadow-lg ring-1 ring-black/5";
+  const wrapperClass =
+    resolvedSize === "sm"
+      ? "inline-flex items-center justify-center p-2 rounded-xl bg-white shadow-md ring-1 ring-black/5"
+      : resolvedSize === "lg"
+      ? "inline-flex items-center justify-center p-4 rounded-3xl bg-white shadow-lg ring-1 ring-black/5"
+      : "inline-flex items-center justify-center p-3 rounded-2xl bg-white shadow-lg ring-1 ring-black/5";
 
   return (
     <span className={[wrapperClass, className].filter(Boolean).join(" ")} aria-label={alt}>

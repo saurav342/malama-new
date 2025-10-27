@@ -57,8 +57,8 @@ export function Navigation() {
               data-testid="button-logo"
               aria-label="Go to top / Home"
             >
-              {/* Use the provided logo image */}
-              <Logo small className="rounded-md" />
+              {/* Use the logo with a larger size for better visibility in the navbar */}
+              <Logo size="lg" className="rounded-2xl" />
               {/* keep a visually available brand name for accessibility and larger screens */}
               {/* <span className="hidden sm:inline text-2xl font-bold tracking-tight">Malama</span> */}
             </button>
