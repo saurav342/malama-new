@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import Logo from "@/components/ui/logo";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -45,9 +46,7 @@ export function Footer() {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-2 mb-4" data-testid="footer-logo">
-                <div className="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-green-500 flex items-center justify-center">
-                  <span className="text-xl font-bold text-primary-foreground">M</span>
-                </div>
+                <Logo small className="rounded-md" />
                 <span className="text-2xl font-bold tracking-tight">Malama</span>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed max-w-sm">

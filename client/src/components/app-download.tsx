@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Smartphone, QrCode, Download, Star, MapPin, Bell } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Logo from "@/components/ui/logo";
 
 export function AppDownload() {
   const appFeatures = [
@@ -21,6 +22,9 @@ export function AppDownload() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <div className="flex items-center justify-center mb-6">
+            <Logo />
+          </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4" data-testid="text-app-heading">
             Get the Malama App
           </h2>
@@ -48,7 +52,9 @@ export function AppDownload() {
                       <Smartphone className="w-12 h-12 text-white" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-2xl font-bold text-white">Malama</h3>
+                      <div className="flex justify-center">
+                        <Logo className="h-14 w-auto" alt="Malama in app" />
+                      </div>
                       <p className="text-white/90">Eco-Friendly Rides</p>
                     </div>
                     <div className="space-y-3 w-full">

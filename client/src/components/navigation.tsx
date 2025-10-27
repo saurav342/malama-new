@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Logo from "@/components/ui/logo";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,11 +51,16 @@ export function Navigation() {
             transition={{ delay: 0.2 }}
             className="flex items-center gap-2"
           >
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2" data-testid="button-logo">
-              <div className="w-10 h-10 rounded-md bg-gradient-to-br from-primary to-green-500 flex items-center justify-center">
-                <span className="text-xl font-bold text-primary-foreground">M</span>
-              </div>
-              <span className="text-2xl font-bold tracking-tight">Malama</span>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="flex items-center gap-3"
+              data-testid="button-logo"
+              aria-label="Go to top / Home"
+            >
+              {/* Use the provided logo image */}
+              <Logo small className="rounded-md" />
+              {/* keep a visually available brand name for accessibility and larger screens */}
+              <span className="hidden sm:inline text-2xl font-bold tracking-tight">Malama</span>
             </button>
           </motion.div>
 
