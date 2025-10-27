@@ -60,7 +60,7 @@ export function Navigation() {
               {/* Use the provided logo image */}
               <Logo small className="rounded-md" />
               {/* keep a visually available brand name for accessibility and larger screens */}
-              <span className="hidden sm:inline text-2xl font-bold tracking-tight">Malama</span>
+              {/* <span className="hidden sm:inline text-2xl font-bold tracking-tight">Malama</span> */}
             </button>
           </motion.div>
 
