@@ -9,22 +9,33 @@ import logoSrc from "../../../../attached_assets/logo.png";
 type LogoProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   /** small variant (useful for nav) */
   small?: boolean;
+  /** visual treatment: 'plain' (just the image) or 'card' (rounded white card around it) */
+  variant?: "plain" | "card";
 };
 
-export function Logo({ small, alt = "Malama logo", className = "", ...rest }: LogoProps) {
-  const imgClass = small ? "h-8 w-auto" : "h-12 w-auto";
+export function Logo({ small, alt = "Malama logo", className = "", variant = "card", ...rest }: LogoProps) {
+  const sizeClass = small ? "h-8 w-auto" : "h-12 w-auto";
+  const imgEmphasis = "drop-shadow-md contrast-[1.05] brightness-105 saturate-110";
 
-  // Wrapper gives the logo a subtle, bold, and polished look:
-  // - rounded card background
-  // - light shadow and ring for contrast on pale backgrounds
-  // - small vs regular padding
+  if (variant === "plain") {
+    return (
+      <img
+        src={logoSrc}
+        alt={alt}
+        className={[sizeClass, imgEmphasis, className].filter(Boolean).join(" ")}
+        {...rest}
+      />
+    );
+  }
+
+  // Card variant: rounded white background with soft shadow and subtle ring
   const wrapperClass = small
-    ? "inline-flex items-center justify-center p-1 rounded-md bg-white/95 shadow-sm ring-1 ring-gray-100"
-    : "inline-flex items-center justify-center p-2 rounded-lg bg-white shadow-md ring-1 ring-gray-100";
+    ? "inline-flex items-center justify-center p-1.5 rounded-xl bg-white shadow-md ring-1 ring-black/5"
+    : "inline-flex items-center justify-center p-3 rounded-2xl bg-white shadow-lg ring-1 ring-black/5";
 
   return (
     <span className={[wrapperClass, className].filter(Boolean).join(" ")} aria-label={alt}>
-      <img src={logoSrc} alt={alt} className={imgClass} {...rest} />
+      <img src={logoSrc} alt={alt} className={[sizeClass, imgEmphasis].join(" ")} {...rest} />
     </span>
   );
 }
